@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLOCK</title>
+</head>
+
+<body>
+    <p id="time">00 00 00</p>
+</body>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #01000a;
+        color: #3e18d47a;
+        font-size: 9rem;
+    }
+
+    body p {
+        text-shadow: 6px 3px 10px #3e18d4,
+            9px 7px 10px #3e18d4,
+            9px -5px 10px #3e18d4,
+            -7px -4px 10px #3e18d4;
+    }
+</style>
+<script>
+    setInterval((time, hours, minutes, seconds) => {
+        time = new Date();
+        hours = time.getHours();
+        minutes = time.getMinutes();
+        seconds = time.getSeconds();
+        if (hours < 10) hours = '0' + hours;
+        if (minutes < 10) minutes = '0' + minutes;
+        if (seconds < 10) seconds = '0' + seconds;
+        document.getElementById('time').innerText = `${hours} ${minutes} ${seconds}`;
+    }, 999);
+</script>
+
+</html>
